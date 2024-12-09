@@ -31,14 +31,20 @@ public class WeatherTrackerCSV {
         mapToDailyWeatherData(data, weatherData);
       }
 
+      System.out.println("\nthe average high temp is: " + calcAvgHighTemps(weatherData));
+      System.out.println("the average low temp is: " + calcAvgLowTemps(weatherData));
+      System.out.println("the average pressure is: " + calcAvgPressure(weatherData));
+      System.out.println("the average rainfall is: " + calcAvgRainfall(weatherData));
+      System.out.println("the average humdity is: " + calcAvgHumidity(weatherData));
 
-//      calcAvgTemps(weatherData);
-//      calcAvgPressure(weatherData);
-//      calcAvgRainfall(weatherData);
-//      calcHumidity(weatherData);
-//      calcWindSpeed(weatherData);
-//      calcMaxMinHighTemp(weatherData);
-//      calcMaxMinLowTemp(weatherData);
+      ;
+
+      calcAvgPressure(weatherData);
+      calcAvgRainfall(weatherData);
+      calcAvgHumidity(weatherData);
+      calcMaxMinWindSpeed(weatherData);
+      calcMaxMinHighTemp(weatherData);
+      calcMaxMinLowTemp(weatherData);
       calcMostFreqWindDirection(weatherData);
 
 
@@ -84,28 +90,97 @@ public class WeatherTrackerCSV {
   }
 
   static void calcMaxMinLowTemp(ArrayList<DailyWeatherData> data) {
+    Integer lowestLowTemp = Integer.MAX_VALUE;
+    Integer highestLowTemp = Integer.MIN_VALUE;
+
+    for( DailyWeatherData d : data) {
+      if(d.lowTemp < lowestLowTemp) {
+        lowestLowTemp = d.lowTemp;
+      }
+
+      if(d.lowTemp > highestLowTemp) {
+        highestLowTemp = d.lowTemp;
+      }
+    }
+
+    if ( lowestLowTemp != Integer.MAX_VALUE) {
+      System.out.println("\nMax low temp is " + highestLowTemp);
+      System.out.println("Min low temp is " + lowestLowTemp);
+    } else {
+
+      System.out.println("\n No Data");
+    }
 
   }
   static void calcMaxMinHighTemp(ArrayList<DailyWeatherData> data) {
+    Integer lowestHighTemp = Integer.MAX_VALUE;
+    Integer highestHighTemp = Integer.MIN_VALUE;
 
+    for( DailyWeatherData d : data) {
+      if(d.highTemp < lowestHighTemp) {
+        lowestHighTemp = d.highTemp;
+      }
+
+      if(d.highTemp > highestHighTemp) {
+        highestHighTemp = d.highTemp;
+      }
+    }
+
+    if ( lowestHighTemp != Integer.MAX_VALUE) {
+      System.out.println("\nMax high temp is " + highestHighTemp);
+      System.out.println("Min high temp is " + lowestHighTemp);
+    } else {
+
+      System.out.println("\n No Data");
+    }
   }
 
-  static void calcWindSpeed(ArrayList<DailyWeatherData> data) {
+  static void calcMaxMinWindSpeed(ArrayList<DailyWeatherData> data) {
+    Integer lowestWindSpeed = Integer.MAX_VALUE;
+    Integer highestWindSpeed = Integer.MIN_VALUE;
 
+    for( DailyWeatherData d : data) {
+      if(d.windSpeed < lowestWindSpeed) {
+        lowestWindSpeed = d.windSpeed;
+      }
+
+      if(d.windSpeed > highestWindSpeed) {
+        highestWindSpeed = d.windSpeed;
+      }
+    }
+
+    if ( lowestWindSpeed != Integer.MAX_VALUE) {
+      System.out.println("\nMax wind speed is " + highestWindSpeed);
+      System.out.println("Min wind speed is " + lowestWindSpeed);
+    } else {
+
+      System.out.println("\n No Data");
+    }
   }
-  static void calcHumidity(ArrayList<DailyWeatherData> data) {
 
+
+  static Double calcAvgHumidity(ArrayList<DailyWeatherData> data) {
+    Double sum = data.stream().mapToDouble(d -> d.humidity).sum();
+    return sum / data.size();
   }
 
-  static void calcAvgRainfall(ArrayList<DailyWeatherData> data) {
-
+  static Double calcAvgRainfall(ArrayList<DailyWeatherData> data) {
+    Double sum = data.stream().mapToDouble(d -> d.rainfall).sum();
+    return sum / data.size();
   }
-  static void calcAvgPressure(ArrayList<DailyWeatherData> data) {
-
+  static Double calcAvgPressure(ArrayList<DailyWeatherData> data) {
+    Double sum = data.stream().mapToDouble(d -> d.pressure).sum();
+    return sum / data.size();
   }
 
-  static void calcAvgTemps(ArrayList<DailyWeatherData> data) {
+  static int calcAvgHighTemps(ArrayList<DailyWeatherData> data) {
+    int sum = data.stream().mapToInt(d -> d.highTemp).sum();
+    return sum / data.size();
+  }
 
+  static int calcAvgLowTemps(ArrayList<DailyWeatherData> data) {
+    int sum = data.stream().mapToInt(d -> d.lowTemp).sum();
+    return sum / data.size();
   }
 
   static void mapToDailyWeatherData(String[] data, ArrayList<DailyWeatherData> list) {
