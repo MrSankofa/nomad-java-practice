@@ -6,15 +6,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class WeatherTrackerCSV {
+
 
   public static void main(String[] args){
     // Store one month's worth of data here
     ArrayList<DailyWeatherData> weatherData = new ArrayList<DailyWeatherData>();
 
-    String filePath = "src/main/weather/weather.csv";
+    String filePath = "src/main/exercises/weather/weather.csv";
 
     try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
 
@@ -28,41 +31,74 @@ public class WeatherTrackerCSV {
         mapToDailyWeatherData(data, weatherData);
       }
 
-      for (int i=1; i<weatherData.size(); i++){
-        // Create an object to store the data
-        DailyWeatherData singleDayWeatherData = weatherData.get(i);
 
-        System.out.println("Enter weather data for day #" + i);
-        System.out.println("------------------------------");
+//      calcAvgTemps(weatherData);
+//      calcAvgPressure(weatherData);
+//      calcAvgRainfall(weatherData);
+//      calcHumidity(weatherData);
+//      calcWindSpeed(weatherData);
+//      calcMaxMinHighTemp(weatherData);
+//      calcMaxMinLowTemp(weatherData);
+      calcMostFreqWindDirection(weatherData);
 
-        System.out.print("High temperature: ");
-        System.out.println(singleDayWeatherData.highTemp);
-
-        System.out.print("Low temperature: ");
-        System.out.println(singleDayWeatherData.lowTemp);
-
-        System.out.print("Rainfall in inches: ");
-        System.out.println(singleDayWeatherData.rainfall);
-
-        System.out.print("Humidity from 0.0 - 1.0: ");
-        System.out.println(singleDayWeatherData.humidity);
-
-        System.out.print("Barometric pressure: ");
-        System.out.println(singleDayWeatherData.pressure);
-
-        System.out.print("Wind Speed: ");
-        System.out.println(singleDayWeatherData.windSpeed);
-
-        System.out.print("Wind Direction in degrees: ");
-        System.out.println(singleDayWeatherData.windDirection);
-
-      }
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  static void calcMostFreqWindDirection(ArrayList<DailyWeatherData> data) {
+
+    // count the wind direction frequency
+    Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+
+     for( DailyWeatherData d : data) {
+       frequencyMap.put(d.windDirection, frequencyMap.getOrDefault(d.windDirection, 0) + 1);
+     }
+
+     // find the highest, TODO: what if they are all unique?
+     Integer highestFrequencyDirection = Integer.MIN_VALUE;
+     Integer mostCommonWindDirection = Integer.MIN_VALUE;
+
+     for( Map.Entry<Integer, Integer> entry : frequencyMap.entrySet() ) {
+       if(entry.getValue() > highestFrequencyDirection) {
+         highestFrequencyDirection = entry.getValue();
+         mostCommonWindDirection = entry.getKey();
+       }
+
+     }
+
+
+    System.out.println("\nThe most common wind direction is " + mostCommonWindDirection + " degrees. Showing " + highestFrequencyDirection + " times");
+
+
+  }
+
+  static void calcMaxMinLowTemp(ArrayList<DailyWeatherData> data) {
+
+  }
+  static void calcMaxMinHighTemp(ArrayList<DailyWeatherData> data) {
+
+  }
+
+  static void calcWindSpeed(ArrayList<DailyWeatherData> data) {
+
+  }
+  static void calcHumidity(ArrayList<DailyWeatherData> data) {
+
+  }
+
+  static void calcAvgRainfall(ArrayList<DailyWeatherData> data) {
+
+  }
+  static void calcAvgPressure(ArrayList<DailyWeatherData> data) {
+
+  }
+
+  static void calcAvgTemps(ArrayList<DailyWeatherData> data) {
+
   }
 
   static void mapToDailyWeatherData(String[] data, ArrayList<DailyWeatherData> list) {
