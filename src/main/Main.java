@@ -1,4 +1,3 @@
 package src.main;
 
-public class Main {
-}
+public class Main { }
