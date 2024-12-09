@@ -59,19 +59,26 @@ public class WeatherTrackerCSV {
      }
 
      // find the highest, TODO: what if they are all unique?
-     Integer highestFrequencyDirection = Integer.MIN_VALUE;
-     Integer mostCommonWindDirection = Integer.MIN_VALUE;
+     Integer highestFrequencyDirection = 0;
+     ArrayList<Integer> mostCommonWindDirection = new ArrayList<>();
 
      for( Map.Entry<Integer, Integer> entry : frequencyMap.entrySet() ) {
        if(entry.getValue() > highestFrequencyDirection) {
          highestFrequencyDirection = entry.getValue();
-         mostCommonWindDirection = entry.getKey();
+         mostCommonWindDirection.clear();
+         mostCommonWindDirection.add(entry.getKey());
+       } else if ( entry.getValue() == highestFrequencyDirection) {
+         mostCommonWindDirection.add(entry.getKey());
        }
 
      }
 
+     if(mostCommonWindDirection.size() == 0) {
+       System.out.println("\n No Data");
+     } else {
+      System.out.println("\nThe most common wind direction is/are " + mostCommonWindDirection + " degrees. Showing " + highestFrequencyDirection + " times");
+     }
 
-    System.out.println("\nThe most common wind direction is " + mostCommonWindDirection + " degrees. Showing " + highestFrequencyDirection + " times");
 
 
   }
