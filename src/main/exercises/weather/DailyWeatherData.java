@@ -1,4 +1,4 @@
-package src.main;
+package src.main.exercises.weather;
 
 public class DailyWeatherData{
   // Track high and low temperatures

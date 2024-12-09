@@ -1,4 +1,4 @@
-package src.main;
+package src.main.exercises.weather;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 
 public class WeatherTrackerCSV {
@@ -15,7 +14,7 @@ public class WeatherTrackerCSV {
     // Store one month's worth of data here
     ArrayList<DailyWeatherData> weatherData = new ArrayList<DailyWeatherData>();
 
-    String filePath = "src/main/weather.csv";
+    String filePath = "src/main/weather/weather.csv";
 
     try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
 
