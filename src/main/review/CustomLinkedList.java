@@ -90,7 +90,9 @@ public class CustomLinkedList<T> {
     return null;
   }
 
-  public T remove(int index) {
+  // find the index,
+  // use the prev.next and point it to current index ndex
+  public Node remove(int index) {
     if (index < 0 || index >= size()) {
       return null;
     }
@@ -98,7 +100,7 @@ public class CustomLinkedList<T> {
     if(index == 0) {
       Node temp = this.head;
       this.head = null;
-      return (T) temp;
+      return temp;
     }
 
     Node iter = this.head;
@@ -111,7 +113,9 @@ public class CustomLinkedList<T> {
       count++;
     }
 
-    return (T) iter;
+    prev.next = iter.next;
+
+    return iter;
   }
 }
 

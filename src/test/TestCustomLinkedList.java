@@ -46,8 +46,8 @@ public class TestCustomLinkedList {
     list.add(3);
     list.remove(1);
     assertEquals(2, list.size(), "Size should be 2 after removing one element");
-    assertEquals(1, list.get(0), "First element should still be 1");
-    assertEquals(3, list.get(1), "Second element should now be 3");
+    assertEquals(1, list.get(0).data, "First element should still be 1");
+    assertEquals(3, list.get(1).data, "Second element should now be 3");
   }
 
 //  @Test
