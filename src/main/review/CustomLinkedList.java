@@ -1,5 +1,27 @@
 package src.main.review;
 
+
+/*
+* Future improvements
+* 1. Use a Tail Pointer
+Maintaining a tail pointer can optimize appending elements to the list (in the add method) from
+O(n) to 𝑂(1)
+
+
+2. Simplify insert Logic
+Your insert logic can be cleaned up to avoid redundant checks and improve readability.
+
+3. Optimize size
+Currently, size iterates through the entire list every time it's called, making it O(n). This can be optimized to O(1) by maintaining a size field.
+
+4. Clean Up remove Logic
+Avoid nullifying the entire list when removing the head, and ensure edge cases like an empty list are handled.
+
+5. Improve Readability
+Use meaningful variable names and proper indentation for clarity.
+*
+* */
+
 public class CustomLinkedList<T> {
   private Node head;
 
