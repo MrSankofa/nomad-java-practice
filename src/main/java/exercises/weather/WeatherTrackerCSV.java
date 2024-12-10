@@ -1,4 +1,4 @@
-package src.main.exercises.weather;
+package exercises.weather;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

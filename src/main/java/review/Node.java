@@ -1,4 +1,4 @@
-package src.main.review;
+package review;
 
 public class Node<T> {
   public T data;
