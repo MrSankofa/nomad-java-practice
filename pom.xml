@@ -8,12 +8,6 @@
     <artifactId>MyJavaProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Java Version -->
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
-
     <!-- Dependencies -->
     <dependencies>
         <!-- JUnit 5 -->
@@ -23,6 +17,35 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/ses -->
+        <!-- AWS SDK SES -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>ses</artifactId>
+            <version>2.29.29</version> <!-- Update to the latest stable version -->
+        </dependency>
+
+        <!-- AWS SDK Core (for Region, SdkBytes, etc.) -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>aws-core</artifactId>
+            <version>2.20.80</version>
+        </dependency>
+
+        <!-- JavaMail for handling attachments -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
     </dependencies>
 
     <!-- Build Configuration -->
@@ -47,4 +70,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Java Version -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 </project>

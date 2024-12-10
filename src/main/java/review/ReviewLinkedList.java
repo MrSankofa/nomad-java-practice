@@ -1,4 +1,4 @@
-package src.main.review;
+package review;
 
 import java.util.LinkedList;
 
