@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example' // Replace with your group
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Add your dependencies here
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    // https://mvnrepository.com/artifact/software.amazon.awssdk/ses
+    implementation group: 'software.amazon.awssdk', name: 'ses', version: '2.29.29'
+    // https://mvnrepository.com/artifact/software.amazon.awssdk/sesv2
+    implementation group: 'software.amazon.awssdk', name: 'sesv2', version: '2.29.29'
+
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
