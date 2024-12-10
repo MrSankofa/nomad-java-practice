@@ -67,9 +67,9 @@ public class CustomLinkedList<T> {
     return this.head == null;
   }
 
-  public Node get(int index) {
+  public Node get(int index) throws IndexOutOfBoundsException {
     if (index < 0 || index >= size()) {
-      return null;
+      throw new IndexOutOfBoundsException(index);
     }
 
     if(index == 0) {

@@ -50,10 +50,21 @@ public class TestCustomLinkedList {
     assertEquals(3, list.get(1).data, "Second element should now be 3");
   }
 
-//  @Test
-//  public void testRemoveFromEmptyList() {
-//    assertThrows(IndexOutOfBoundsException.class, () -> list.remove(0), "Removing from an empty list should throw an exception");
-//  }
+  @Test
+  public void testRemoveElementLast() {
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.remove(2);
+    assertEquals(2, list.size(), "Size should be 2 after removing one element");
+    assertEquals(1, list.get(0).data, "First element should still be 1");
+    assertEquals(null, list.get(2), "Second element should now be 3");
+  }
+
+  @Test
+  public void testGetFromEmptyList() {
+    assertThrows(IndexOutOfBoundsException.class, () -> list.get(0), "getting from an empty list should throw an exception");
+  }
 
   @Test
   public void testGetElement() {
