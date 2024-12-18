@@ -1,8 +1,10 @@
 package review.dependencyInjection;
 
-public class SonyMonitor {
+public class SonyMonitor implements Monitor {
 
-  public void brighten() {
+  @Override
+  public void brightness(int brightness) {
     System.out.println("Brighten");
+
   }
 }

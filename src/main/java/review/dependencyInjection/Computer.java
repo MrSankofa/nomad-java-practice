@@ -5,28 +5,33 @@ package review.dependencyInjection;
 // Class composition
 public class Computer {
 
-  // Tight Coupling
-  private SonyMonitor monitor;
-  private WDHarddrive hardDrive;
+  // Tight Coupling to Loose Coupling - code to abstractions or interfaces,
+  // no works with any class that implements or extends a Monitor or a Hard Drive
+  private Monitor monitor;
+  private HardDrive hardDrive;
 
-  public Computer(SonyMonitor monitor, WDHarddrive hardDrive) {
+  // monitor and hard drive are dependencies of a computer
+  // i.e. a computer depends on a monitor and a hard drive
+  public Computer(Monitor monitor, HardDrive hardDrive) {
+    // this is construction injection
     this.monitor = monitor;
     this.hardDrive = hardDrive;
   }
 
-  public SonyMonitor getMonitor() {
+  public Monitor getMonitor() {
     return monitor;
   }
 
-  public void setMonitor(SonyMonitor monitor) {
+  // this is setter injection
+  public void setMonitor(Monitor monitor) {
     this.monitor = monitor;
   }
 
-  public WDHarddrive getHardDrive() {
+  public HardDrive getHardDrive() {
     return hardDrive;
   }
 
-  public void setHardDrive(WDHarddrive hardDrive) {
+  public void setHardDrive(HardDrive hardDrive) {
     this.hardDrive = hardDrive;
   }
 }

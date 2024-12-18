@@ -9,7 +9,7 @@ public class ComputerController {
     Computer computer = new Computer(monitor, harddrive);
 
     computer.getHardDrive().saveDisk();
-    computer.getMonitor().brighten();
+    computer.getMonitor().brightness(30);
 
   }
 }
